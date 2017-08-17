@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>QCEW Mapbox example</title>
+    <style>
+      body {margin: 0; padding: 0; overflow: hidden;}
+    </style>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
+  </head>
+  <body>
+  <div id='map' style='width: max; height: 1000px;'></div>
+	<script>
+	mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlbGxleS1icm9hZHdheSIsImEiOiJjajMzYmttZ2IwMDRwMnFvOXdlMGtmejZuIn0.-IlUkZ4BnHjIjq_8hi4XUg';
+	var map = new mapboxgl.Map({
+		container: 'map',
+		style: 'mapbox://styles/shelley-broadway/cj369mjfi00022rrxfs3rfb12',
+		center: [-104.9903,39.7392],
+		zoom: 7,
+		bearing: 2
+	});
+	
+	function rotate(){
+	  map.easeTo({bearing:-30, duration:10000, pitch:0, zoom:10});
+	  window.setTimeout(function(){
+		map.easeTo({bearing:0, duration:10000, pitch:0, zoom:8});
+		window.setTimeout(function(){
+		}, 10000)
+	  }, 10000)
+	}
+
+	map.on('load', function(){
+	  rotate()
+});
+
+map.on('load', function () {
+
+
+});
+
+	
+	
+
+	
+	</script>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+.jumbotron{
+    padding: 30px 30;
+    padding-bottom: 10px;
+    
+}
+section{
+    padding:30px;
+}
+.title{
+    background:#0383c0;
+    padding:10px;
+    color:white;
+}
+.title small{
+    color:#ccc !important;
+}
+
+.icons{
+    background:white;
+}
+.gallery > card-block:hover {
+    color: black;
+}
+
+.jumbotron h1{
+    font-size: 55px;
+}
+.fa-color{
+    color:#6d04f7;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  border-radius: 25px;
+}
+
+.container:hover .image {
+  opacity: 0.5;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+.card-title {
+  background-color: #abb0ba;
+  color: white;
+  font-size: 24px;
+  padding: 10px 10px;
+}
+.img{
+    vertical-align: middle;
+}
+.second-check{
+    background-color: #0383c0;
+    color: white;
+    padding: 60px;
+}
+.second-check ul{
+    padding-top: 10px;
+    list-style: none;
+}
+.second-check li{
+    font-size:20px;
+    padding-bottom: 15px;
+}
+.second-check img{
+    border-radius: 50%;
+}
+#submit{
+    margin-top:15px;
+}
+footer{
+    background:#f4f4f4;
+    text-align: center;
+    padding:20px;
+}
+
+@media(max-width:990px){
+    .navbar-header{
+        float:none;
+    }
+    .navbar-left, .narbar-right{
+        float:none !important;
+    }
+    .navbar-toggle{
+        display: block;
+        
+    }
+    .navbar-collapse{
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1)
+    }
+    .navbar-fixed top{
+        top:0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse{
+        display:none !important;    
+    }
+    
+    .navbar-nav{
+        float:none;
+        margin-top:7.5px;
+    }
+    .navbar-nav > li{
+        float:none;
+    }
+    .navbar-nav > li > a{
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+    .collapse.in{
+        display:block !important
+    }
+    
+}
+
+@media(max-width:768px){
+    .jumbotron{
+        min-height:300px;
+    }
+    .jumbotron img{
+        display: none;
+    }
+}
