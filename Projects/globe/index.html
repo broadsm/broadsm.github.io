@@ -110,7 +110,7 @@
   </div>
 
   <div id="currentInfo">
-    <span id="year2010" class="year">2010</span>
+    <span id="year2015" class="year">2015</span>
 
   </div>
 
@@ -132,7 +132,7 @@
       Detector.addGetWebGLMessage();
     } else {
 
-      var years = ['2010'];
+      var years = ['2015'];
       var container = document.getElementById('container');
       var globe = new DAT.Globe(container);
 
@@ -164,7 +164,7 @@
       
       
       xhr = new XMLHttpRequest();
-      xhr.open('GET', 'QCEW_Employment_2015_med.json', true);
+      xhr.open('GET', 'QCEW_Employment_2015.json', true);
       xhr.onreadystatechange = function(e) {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
