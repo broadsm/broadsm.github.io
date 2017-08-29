@@ -4,13 +4,15 @@
     <meta charset='UTF-8' />
     <title>Employment Points for State of CO from QCEW Data</title>
     <style>
-      body {margin: 0; padding: 0; overflow: hidden;}
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
     </style>
 	<script src='https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v0.37.0/mapbox-gl.css' rel='stylesheet' />
   </head>
   <body>
-  <div id='map' style='width: max; height: 1000px;'></div>
+  <div id='map' style='width: max; height: 1000px;'>
+      </div>
 	<script>
 	mapboxgl.accessToken = 'pk.eyJ1Ijoic2hlbGxleS1icm9hZHdheSIsImEiOiJjajMzYmttZ2IwMDRwMnFvOXdlMGtmejZuIn0.-IlUkZ4BnHjIjq_8hi4XUg';
 	var map = new mapboxgl.Map({
@@ -38,11 +40,9 @@ map.on('load', function () {
 
 
 });
+        map.addControl(new mapboxgl.FullscreenControl());
+      </script>
 
-	
-	
-
-	
-	</script>
-  </body>
+    
+    </body>
 </html>
