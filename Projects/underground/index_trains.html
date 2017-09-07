@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Live map of London Underground trains</title>
+  <link rel="stylesheet" href="css/leaflet.core-and-label.css">
+  <!--[if lte IE 8]>
+    <link rel="stylesheet" href="/map/tube/lib/leaflet.ie.css">
+  <![endif]-->
+  <link rel="stylesheet" href="css/css.css">
+  <script src="js/leaflet.core-and-label.js"></script>
+  <script>
+    var TrainTimes = {
+      refresh: 1,
+      keep_trains: true,
+      url: '/map/tube/',
+      centre: [51.507, -0.120],
+      fit_bounds: false,
+      station_icon: true,
+      train_colour: '#ff0'
+    };
+  </script>
+  <script src="js/trains.js?2017-08-24"></script>
+ </head>
+ <body>
+
+  <div id="map"><div style="padding: 1em; color: gray;">Loading...</div></div>
+
+
+<noscript>
+<div style="border: solid 2px #cc0000; padding: 5px; width: 70%; margin: 1em auto;">
+I'm afraid that this page requires JavaScript to draw the maps and plot
+move the trains, which isn't possible with just HTML.
+However, all the data used to generate the map is accessible and available from
+<a href="http://www.tfl.gov.uk/">Transport for London's website</a>
+</div>
+</noscript>
+
+  <div id="loading"></div>
+  <div id="info">
+
+<div id="info_show">
+<p class="showhide"><a href="" onclick="Info.Show(); return false;">More information</a></p>
+</div>
+<div id="info_shown">
+<p class="showhide"><a href="" onclick="Info.Hide(); return false;">Hide</a>
+
+
+
+<!-- In the meantime, you can <a href="http://www.flickr.com/photos/vicchi/4730203122/">see a video of
+the site in action</a> courtesy of Gary Gale. -->
+
+
+
+<p id="footer">
+Originally built at <a href="http://sciencehackday.com/">Science Hackday</a>, June 2010.
+<a href="http://github.com/dracos/underground-live-map">Source code</a>.
+</p>
+
+  </div>
+  </div>
+  <script type="text/javascript"> load(); </script>
+ </body>
+</html>

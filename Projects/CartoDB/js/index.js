@@ -7,12 +7,15 @@
         }).addTo(map);
         cartodb.createLayer(map, 'https://shelleybroadway.carto.com/api/v2/viz/5576df76-60a7-47eb-9545-3552b29b1dc5/viz.json')
          .addTo(map)
-         .on('done', function(layer) {
-           // get sublayer 0 and set the infowindow template
-           var sublayer = layer.getSubLayer(0);
-           sublayer.infowindow.set('template', $('#infowindow_template').html());
-          }).on('error', function() {
-            console.log("some error occurred");
+         .done(function(layers) {
+			 
+            // add infowindow 
+		var sublayer = layers.getSubLayer(0);
+		var sublayer1 = layers.getSubLayer(1);
+			cartodb.vis.Vis.addInfowindow(map, sublayer, ['time_in_minutes']);
+			cartodb.vis.Vis.addInfowindow(map, sublayer1, ['name'])
           });
       }
-      window.onload = main;
+
+        // load main() function
+        window.onload = main; 
