@@ -65,6 +65,12 @@ section{
 .img{
     vertical-align: middle;
 }
+.static_gallery {
+    padding: 25px 10px;
+}
+.top-buffer {
+    margin-top:50px;
+}
 .hovereffect {
   width: 100%;
   height: 100%;
@@ -153,7 +159,8 @@ section{
 footer{
     background:#f4f4f4;
     text-align: center;
-    padding:20px;
+    padding:50px;
+    margin-top:150px;
 }
 
 @media(max-width:990px){
