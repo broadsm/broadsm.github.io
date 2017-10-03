@@ -17,10 +17,12 @@ section{
 
 .icons{
     background:white;
+    width:auto;
 }
 .gallery > card-block:hover {
     color: black;
 }
+
 
 .jumbotron h1{
     font-size: 55px;
