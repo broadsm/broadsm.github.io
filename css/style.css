@@ -17,7 +17,6 @@ section{
 
 .icons{
     background:white;
-    width:auto;
 }
 .gallery > card-block:hover {
     color: black;
@@ -27,8 +26,21 @@ section{
 .jumbotron h1{
     font-size: 55px;
 }
+
+
 .fa-color{
     color:#6d04f7;
+}
+
+.title-bar{
+    background-color: #212529;
+    padding: 15px
+}
+
+.web-apps{
+    font-size: 1.2em;
+    color: white;
+    font-family:inherit
 }
 
 .image {
