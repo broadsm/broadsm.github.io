@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Get started with MapView - Create a 2D map</title>
+
+	<link rel="stylesheet" href="https://js.arcgis.com/4.4/esri/css/main.css">
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="../../../../favicon.ico">
+<script src="https://js.arcgis.com/4.4/"></script>
+
+
+
+<script>
+require([
+  "esri/Map",
+  "esri/views/MapView",
+  "esri/layers/FeatureLayer",
+  "dojo/domReady!",
+  "esri/symbols/SimpleMarkerSymbol", 
+  "esri/Color",
+  "esri/renderers/UniqueValueRenderer",
+  "esri/renderers/SimpleRenderer"
+], function(
+  Map,
+  MapView,
+  FeatureLayer,
+  UniqueValueRenderer,
+  SimpleMarkerSymbol,
+  SimpleRenderer
+  
+  
+) {
+
+  // Create the Map and add the featureLayer defined above
+  var map = new Map({
+    basemap: "dark-gray-vector",
+  });
+
+  // Create the MapView
+  var view = new MapView({
+    container: "viewDiv",
+    map: map,
+    center: [-104.9903, 39.7392],
+    zoom:10
+  });
+  // Set a continuous color ramp on the renderer with visual variables
+	var stationsRenderer = {
+	  type: "simple",  // autocasts as new SimpleRenderer()
+	  symbol: { type: "simple-fill" },  // autocasts as new SimpleFillSymbol()
+	  visualVariables: [{
+		type: "color",
+		field: "POPULATION",
+		normalizationField: "SQ_KM",
+		// features with 30 ppl/sq km or below are assiged the first color
+		stops: [{ value: 100, color: "#FFFCD4" },
+			  { value: 500, color: "#0D2644" }]
+	  }]
+	};
+	
+	var popup_stations = {
+	  title: "Gas stations",
+	  content: "<p>Name: <b>{f1}</b></p>" +
+			  "<ul><li>Gasoline: {f6} </li>" +
+			  "<li>Diesel: {f7}</li>" +
+			  "<li>Street address: {f2} {f5}</li></ul>",
+	  fieldInfos: [{
+		fieldName: "f1",  // The field whose values you want to format
+		format: {
+		  digitSeparator: true, // Uses a comma separator in numbers >999
+		  places: 0 // Sets the number of decimal places to 0 and rounds up
+		}
+	  }, {
+		fieldName: "f6",  // The field whose values you want to format
+		format: {
+		  digitSeparator: true, // Uses a comma separator in numbers >999
+		  places: 0 // Sets the number of decimal places to 0 and rounds up
+		}
+	  }, {
+		fieldName: "f7",  // The field whose values you want to format
+		format: {
+		  digitSeparator: true, // Uses a comma separator in numbers >999
+		  places: 0 // Sets the number of decimal places to 0 and rounds up
+		}
+	  }]
+	};
+	
+	var popup_roads = {
+	  title: "Roads Network",
+	  content: "<p>Name: <b>{ROUTE_NAME}</b></p>" +
+			  "<ul><li>Average speed limit: {AVG_Speed_Limit} </li>" +
+			  "<li>Average AADT: {AVG_AADT}</li></ul>",
+			  
+	  fieldInfos: [{
+		fieldName: "ROUTE_NAME",  // The field whose values you want to format
+		format: {
+		  digitSeparator: true, // Uses a comma separator in numbers >999
+		  places: 0 // Sets the number of decimal places to 0 and rounds up
+		}
+	  }, {
+		fieldName: "AVG_Speed_Limit",  // The field whose values you want to format
+		format: {
+		  digitSeparator: true, // Uses a comma separator in numbers >999
+		  places: 0 // Sets the number of decimal places to 0 and rounds up
+		}
+	  }, {
+		fieldName: "AVG_AADT",  // The field whose values you want to format
+		format: {
+		  digitSeparator: true, // Uses a comma separator in numbers >999
+		  places: 0 // Sets the number of decimal places to 0 and rounds up
+		}
+	  }]
+	};
+
+	
+
+  // Create a FeatureLayer
+  var featureLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/yzB9WM8W0BO3Ql7d/arcgis/rest/services/AKUXU/FeatureServer/0",
+    outFields: ["*"],
+	popupTemplate: popup_stations
+   });
+  var aadtLyr = new FeatureLayer({
+    url: "https://services.arcgis.com/yzB9WM8W0BO3Ql7d/arcgis/rest/services/speeds_aadt/FeatureServer/0",
+    outFields: ["*"],
+	popupTemplate: popup_roads
+   });
+   map.add(aadtLyr);
+   map.add(featureLayer);
+ });
+ 
+
+</script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>
+ 
+          

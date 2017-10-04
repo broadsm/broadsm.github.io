@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Get started with MapView - Create a 2D map</title>
+
+<link rel="stylesheet" href="https://js.arcgis.com/4.4/esri/css/main.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://js.arcgis.com/4.4/"></script>
+<script>
+require([
+  "esri/Map",
+  "esri/views/MapView",
+  "esri/layers/FeatureLayer",
+  "dojo/domReady!"
+], function(
+  Map,
+  MapView,
+  FeatureLayer
+  
+) {
+
+  // Create the Map and add the featureLayer defined above
+  var map = new Map({
+    basemap: "gray",
+  });
+
+  // Create the MapView
+  var view = new MapView({
+    container: "viewDiv",
+    map: map,
+    center: [-104.9903, 39.7392],
+    zoom: 13
+  });
+  
+	var template = {
+	  title: "Annual average daily traffic",
+	  content: "<p>Based on NAV point data, <b>{ROUTE}</b> name of road.</p>" +
+			  "<ul><li>{AADT} is the annual average daily traffic</li>" +
+			  "<li>Counted in the year {COUNTYEAR}</li>" +
+			  "<li>{ROADTERRAIN} is </li></ul>",
+	  fieldInfos: [{
+		fieldName: "AADT",  // The field whose values you want to format
+		format: {
+		  digitSeparator: true, // Uses a comma separator in numbers >999
+		  places: 0 // Sets the number of decimal places to 0 and rounds up
+		}
+	  }, {
+		fieldName: "COUNTYEAR",  // The field whose values you want to format
+		format: {
+		  digitSeparator: false, // Uses a comma separator in numbers >999
+		  places: 0 // Sets the number of decimal places to 0 and rounds up
+		}
+	  }, {
+		fieldName: "LENGTH_",  // The field whose values you want to format
+		format: {
+		  digitSeparator: true, // Uses a comma separator in numbers >999
+		  places: 0 // Sets the number of decimal places to 0 and rounds up
+		}
+	  }]
+	};
+
+  // Create a FeatureLayer
+  var featureLayer = new FeatureLayer({
+    url: "http://dtdapps.coloradodot.info/arcgis/rest/services/CPLAN/TrafficVolume/MapServer/4",
+    outFields: ["*"],
+	popupTemplate: template
+   });
+   map.add(featureLayer);
+ });
+
+</script>
+</head>
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>
+ 
+          
