@@ -7,8 +7,12 @@ section{
     padding:30px;
 }
 
+.navbarHeader{
+    background-color: #495057
+}
+
 .navbar-default{
-    background-color: #495057 !important
+    background-color: #495057
 }
 .title{
     background:#0383c0;
